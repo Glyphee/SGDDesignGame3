@@ -66,9 +66,9 @@ public class GhostCon : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0f, lookX, 0f));
         }
 
-        //pauses the game
+        //extended functionality
         OnPauseAndResume();
-        UnPossession();
+        Possession();
     }
 
     void OnPauseAndResume()
@@ -94,9 +94,15 @@ public class GhostCon : MonoBehaviour
         }
     }
 
-    void UnPossession()
+    void Possession()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && possessing)
+        if (Input.GetKeyDown(KeyCode.Space) && !possessing)
+        {
+            ghostBody.SetActive(false); on = false;
+            holding.transform.SetParent(player.transform);
+            possessing = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && possessing)
         {
             holding.transform.parent = null;
             possessing = false;
@@ -108,12 +114,9 @@ public class GhostCon : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("prop"))
-        {
-            print("possessed an object");
-            ghostBody.SetActive(false); on = false;
-            col.transform.SetParent(player.transform);
+        {            
             holding = col.gameObject;
-            possessing = true;
+            print("found an object");
         }
     }
 }
