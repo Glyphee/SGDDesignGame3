@@ -31,7 +31,7 @@ public class PlayerCon : MonoBehaviour
         transform.Translate(move * speed * Time.deltaTime);
     }
 
-    GameObject DetectClosest()
+    GameObject ObjectToPossess()
     {
         for (int i = 0; i < objects.Length; i++)
         {
