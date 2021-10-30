@@ -17,6 +17,7 @@ public class GhostCon : MonoBehaviour
     private Transform cam;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject ghostBody;
+    [SerializeField] Transform camPosition;
     GameObject player;
     GameObject holding;
 
@@ -28,6 +29,7 @@ public class GhostCon : MonoBehaviour
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
+        cam.position = camPosition.position;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         canGo = true; canLook = true;
@@ -101,13 +103,14 @@ public class GhostCon : MonoBehaviour
             ghostBody.SetActive(false); on = false;
             holding.transform.SetParent(player.transform);
             possessing = true;
+            Debug.Log("parented object");
         }
         else if (Input.GetKeyDown(KeyCode.Space) && possessing)
         {
             holding.transform.parent = null;
             possessing = false;
             ghostBody.SetActive(true); on = true;
-            Debug.Log("unparent object now");
+            Debug.Log("unparented object now");
         }
     }
 
