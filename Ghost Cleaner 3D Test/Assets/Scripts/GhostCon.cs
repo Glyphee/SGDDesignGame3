@@ -11,18 +11,25 @@ public class GhostCon : MonoBehaviour
     float lookY;
     float lookX;
 
+    bool on;
+
     private Transform cam;
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject ghostBody;
 
 
     void Start()
     {
+        //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        canLook = true;
-        canGo = true;
+        canGo = true; canLook = true;
         paused = false;
+
+        //the ghost main body
+        //ghostBody = 
+        on = true;
     }
 
     void Update()
@@ -45,19 +52,21 @@ public class GhostCon : MonoBehaviour
                 transform.Translate(new Vector3(0f, -vertMove, 0f) * moveSpeed/2 * Time.deltaTime);
             }
         }
-
         if (canLook)
         {
             //player look
             lookX += Input.GetAxis("Mouse X") * lookSpeed;
             lookY -= Input.GetAxis("Mouse Y") * lookSpeed;
 
-            lookY = Mathf.Clamp(lookY, -65f, 65f);
+            lookY = Mathf.Clamp(lookY, -.25f, 35f);
+
             cam.rotation = Quaternion.Euler(new Vector3(lookY, lookX, 0f));
             transform.rotation = Quaternion.Euler(new Vector3(0f, lookX, 0f));
         }
 
+        //extended functionality (pausing, possession mechanic, etc)
         OnPauseAndResume();
+        HideAndRevealGhost();
     }
 
     void OnPauseAndResume()
@@ -81,5 +90,25 @@ public class GhostCon : MonoBehaviour
                 canGo = true; canLook = true; paused = false;
             }
         }
+    }
+
+    void HideAndRevealGhost()
+    {
+        string ghostState;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (on)
+            {
+                ghostBody.SetActive(false); on = false;
+                ghostState = "vanished";
+            }
+            else
+            {
+                ghostBody.SetActive(true); on = true;
+                ghostState = "visible";
+            }
+            Debug.Log("Ghost is: " + ghostState);
+        }        
     }
 }
