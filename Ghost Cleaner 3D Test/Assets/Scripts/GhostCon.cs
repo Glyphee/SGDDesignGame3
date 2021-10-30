@@ -11,25 +11,27 @@ public class GhostCon : MonoBehaviour
     float lookY;
     float lookX;
 
+    [Header("Gameplay values")]
     bool on;
-
+    bool possessing;
     private Transform cam;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject ghostBody;
+    GameObject player;
+    GameObject holding;
 
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        on = true;
+
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         canGo = true; canLook = true;
         paused = false;
-
-        //the ghost main body
-        //ghostBody = 
-        on = true;
     }
 
     void Update()
@@ -64,9 +66,9 @@ public class GhostCon : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0f, lookX, 0f));
         }
 
-        //extended functionality (pausing, possession mechanic, etc)
+        //pauses the game
         OnPauseAndResume();
-        HideAndRevealGhost();
+        UnPossession();
     }
 
     void OnPauseAndResume()
@@ -92,23 +94,26 @@ public class GhostCon : MonoBehaviour
         }
     }
 
-    void HideAndRevealGhost()
+    void UnPossession()
     {
-        string ghostState;
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && possessing)
         {
-            if (on)
-            {
-                ghostBody.SetActive(false); on = false;
-                ghostState = "vanished";
-            }
-            else
-            {
-                ghostBody.SetActive(true); on = true;
-                ghostState = "visible";
-            }
-            Debug.Log("Ghost is: " + ghostState);
-        }        
+            holding.transform.parent = null;
+            possessing = false;
+            ghostBody.SetActive(true); on = true;
+            Debug.Log("unparent object now");
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("prop"))
+        {
+            print("possessed an object");
+            ghostBody.SetActive(false); on = false;
+            col.transform.SetParent(player.transform);
+            holding = col.gameObject;
+            possessing = true;
+        }
     }
 }
