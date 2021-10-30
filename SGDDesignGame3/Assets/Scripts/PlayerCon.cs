@@ -6,7 +6,8 @@ public class PlayerCon : MonoBehaviour
 {
     [Header("Movement values")]
     Vector2 move;
-    [SerializeField] float speed;
+    [SerializeField] float speed = 0;
+    [SerializeField] float accelerationTime = 2;
 
 
     // Start is called before the first frame update
@@ -23,9 +24,8 @@ public class PlayerCon : MonoBehaviour
 
     void PlayerMovement()
     {
-        move.x = Input.GetAxisRaw("Horizontal");
-        move.y = Input.GetAxisRaw("Vertical");
-        move = move.normalized;
+        move.x = Input.GetAxis("Horizontal"); //Modified this part a bit to make the ghost accelerate and decelerate instead of moving instantaneously
+        move.y = Input.GetAxis("Vertical");
 
         transform.Translate(move * speed * Time.deltaTime);
     }
