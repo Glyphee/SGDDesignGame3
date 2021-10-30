@@ -100,10 +100,17 @@ public class GhostCon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !possessing)
         {
-            ghostBody.SetActive(false); on = false;
-            holding.transform.SetParent(player.transform);
-            possessing = true;
-            Debug.Log("parented object");
+            if(Vector3.Distance(ghostBody.transform.position, holding.transform.position) <= 1f)
+            {
+                ghostBody.SetActive(false); on = false;
+                holding.transform.SetParent(player.transform);
+                possessing = true;
+                Debug.Log("parented object");
+            }
+            else
+            {
+                print("not close enough");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Space) && possessing)
         {
