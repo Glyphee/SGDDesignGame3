@@ -19,11 +19,7 @@ public class GhostCon : MonoBehaviour
     [SerializeField] Transform camPosition;
     GameObject player;
     GameObject holding;
-    CharacterController chrCon;
-
-    [Header("UI Values")]
-    [SerializeField] Text timerTxt;
-    float time;    
+    CharacterController chrCon;    
 
 
     void Start()
@@ -68,7 +64,7 @@ public class GhostCon : MonoBehaviour
             lookX += Input.GetAxis("Mouse X") * lookSpeed;
             lookY -= Input.GetAxis("Mouse Y") * lookSpeed;
 
-            lookY = Mathf.Clamp(lookY, -.25f, 35f);
+            //lookY = Mathf.Clamp(lookY, -.25f, 35f);
 
             cam.rotation = Quaternion.Euler(new Vector3(lookY, lookX, 0f));
             transform.rotation = Quaternion.Euler(new Vector3(0f, lookX, 0f));
@@ -76,10 +72,7 @@ public class GhostCon : MonoBehaviour
 
         //extended functionality
         OnPauseAndResume();
-        Possession();
-
-        //the timer for each level; should add rating tracking here later
-        Timer();
+        Possession();        
     }
 
     //for pausing the game
@@ -104,23 +97,7 @@ public class GhostCon : MonoBehaviour
                 canGo = true; canLook = true; paused = false;
             }
         }
-    }
-
-    #region Timer
-    void Timer()
-    {
-        time = Time.time;
-        DisplayTime(time);
-    }
-    void DisplayTime(float timeToDisplay)
-    {
-        timeToDisplay += 1;
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-
-        timerTxt.text = "Time Passed: " + string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-    #endregion
+    }    
 
     #region Possession Mechanic
     void Possession()
