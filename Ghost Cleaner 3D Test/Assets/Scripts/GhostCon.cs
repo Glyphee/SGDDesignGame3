@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GhostCon : MonoBehaviour
 {
@@ -20,12 +21,14 @@ public class GhostCon : MonoBehaviour
     [SerializeField] Transform camPosition;
     GameObject player;
     GameObject holding;
+    [SerializeField] Text timerTxt;
+    float time;
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        on = true;
+        on = true;        
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
@@ -71,6 +74,9 @@ public class GhostCon : MonoBehaviour
         //extended functionality
         OnPauseAndResume();
         Possession();
+
+        //the timer for each level
+        Timer();
     }
 
     void OnPauseAndResume()
@@ -94,6 +100,22 @@ public class GhostCon : MonoBehaviour
                 canGo = true; canLook = true; paused = false;
             }
         }
+    }
+
+    void Timer()
+    {
+        time = Time.time;
+        DisplayTime(time);
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timerTxt.text = "Time Passed: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     void Possession()
