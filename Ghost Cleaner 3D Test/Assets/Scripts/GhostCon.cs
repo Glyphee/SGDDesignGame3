@@ -23,10 +23,7 @@ public class GhostCon : MonoBehaviour
 
     [Header("UI Values")]
     [SerializeField] Text timerTxt;
-    float time;
-
-    [Header("Level Objects")]
-    [SerializeField] GameObject[] objects; 
+    float time;    
 
 
     void Start()
@@ -169,11 +166,5 @@ public class GhostCon : MonoBehaviour
             print("found an object");
         }
     }
-    #endregion
-
-    //the following should check if objects are placed in the correct location, and move to the next level if so
-    void PlacementCheck()
-    {
-
-    }
+    #endregion    
 }
