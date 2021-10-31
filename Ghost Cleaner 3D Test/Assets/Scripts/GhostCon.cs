@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class GhostCon : MonoBehaviour
 {
     [Header("Move and Look Values")]
-    public float moveSpeed;
-    public float lookSpeed;
-    public static bool canGo, canLook, paused;
-    float lookY;
-    float lookX;
+    public float moveSpeed; public float lookSpeed;
+    float lookY, lookX;
+    public static bool canGo, canLook, paused;    
 
     [Header("Gameplay values")]
     bool on;
@@ -21,15 +19,21 @@ public class GhostCon : MonoBehaviour
     [SerializeField] Transform camPosition;
     GameObject player;
     GameObject holding;
+    CharacterController chrCon;
+
+    [Header("UI Values")]
     [SerializeField] Text timerTxt;
     float time;
+
+    [Header("Level Objects")]
+    [SerializeField] GameObject[] objects; 
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        on = true;
-        possessing = false;
+        chrCon = player.GetComponent<CharacterController>();
+        on = true; possessing = false;
         holding = null;
 
         //cam and movement values
@@ -105,6 +109,7 @@ public class GhostCon : MonoBehaviour
         }
     }
 
+    #region Timer
     void Timer()
     {
         time = Time.time;
@@ -118,14 +123,16 @@ public class GhostCon : MonoBehaviour
 
         timerTxt.text = "Time Passed: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+    #endregion
 
+    #region Possession Mechanic
     void Possession()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !possessing)
         {
             if(holding != null)
             {
-                if (Vector3.Distance(ghostBody.transform.position, holding.transform.position) <= 1f)
+                if (Vector3.Distance(chrCon.transform.position, holding.transform.position) <= 1f)
                 {
                     AudioCon.sfx.PlayPossess();
                     ghostBody.SetActive(false); on = false;
@@ -161,5 +168,12 @@ public class GhostCon : MonoBehaviour
             holding = col.gameObject;
             print("found an object");
         }
+    }
+    #endregion
+
+    //the following should check if objects are placed in the correct location, and move to the next level if so
+    void PlacementCheck()
+    {
+
     }
 }
