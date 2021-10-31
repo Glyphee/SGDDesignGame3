@@ -28,7 +28,9 @@ public class GhostCon : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        on = true;        
+        on = true;
+        possessing = false;
+        holding = null;
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
@@ -75,10 +77,11 @@ public class GhostCon : MonoBehaviour
         OnPauseAndResume();
         Possession();
 
-        //the timer for each level
+        //the timer for each level; should add rating tracking here later
         Timer();
     }
 
+    //for pausing the game
     void OnPauseAndResume()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -107,11 +110,9 @@ public class GhostCon : MonoBehaviour
         time = Time.time;
         DisplayTime(time);
     }
-
     void DisplayTime(float timeToDisplay)
     {
         timeToDisplay += 1;
-
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
@@ -122,20 +123,30 @@ public class GhostCon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !possessing)
         {
-            if(Vector3.Distance(ghostBody.transform.position, holding.transform.position) <= 1f)
+            if(holding != null)
             {
-                ghostBody.SetActive(false); on = false;
-                holding.transform.SetParent(player.transform);
-                possessing = true;
-                Debug.Log("parented object");
+                if (Vector3.Distance(ghostBody.transform.position, holding.transform.position) <= 1f)
+                {
+                    AudioCon.sfx.PlayPossess();
+                    ghostBody.SetActive(false); on = false;
+                    holding.transform.SetParent(player.transform);
+                    possessing = true;
+                    Debug.Log("parented object");
+                }
+                else
+                {
+                    AudioCon.sfx.PlayTooFar();
+                    print("not close enough");
+                }
             }
             else
             {
-                print("not close enough");
+                print("have not started to clean");
             }
         }
         else if (Input.GetKeyDown(KeyCode.Space) && possessing)
         {
+            AudioCon.sfx.PlayUnpossess();
             holding.transform.parent = null;
             possessing = false;
             ghostBody.SetActive(true); on = true;

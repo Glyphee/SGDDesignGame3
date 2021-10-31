@@ -747,8 +747,9 @@ GameObject:
   m_Component:
   - component: {fileID: 708685256}
   - component: {fileID: 708685257}
+  - component: {fileID: 708685258}
   m_Layer: 0
-  m_Name: BGM
+  m_Name: AudioObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -864,6 +865,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &708685258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708685255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8780b1f58d1cf924f8a0ab25b7ebe36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possess: {fileID: 8300000, guid: fff3eee0231bbbd4c95c9bc4c5ed9e4b, type: 3}
+  unpossess: {fileID: 8300000, guid: 10f62eea21de5a14aa4ee8bcf2a6b14f, type: 3}
+  tooFar: {fileID: 8300000, guid: 23ec76446dceb8949936258ce9e333b6, type: 3}
 --- !u!1 &746973620
 GameObject:
   m_ObjectHideFlags: 0
