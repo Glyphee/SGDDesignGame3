@@ -16,7 +16,7 @@ public class GhostCon : MonoBehaviour
     private Transform cam;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject ghostBody;
-    [SerializeField] Transform camPosition;
+    //[SerializeField] Transform camPosition;
     GameObject player;
     GameObject holding;
     CharacterController chrCon;    
@@ -30,11 +30,11 @@ public class GhostCon : MonoBehaviour
         holding = null;
 
         //cam and movement values
-        cam = GetComponentInChildren<Camera>().transform;
-        cam.position = camPosition.position;
+        //cam = GetComponentInChildren<Camera>().transform;
+        //cam.position = camPosition.position;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        canGo = true; canLook = true;
+        canGo = true; //canLook = true;
         paused = false;
     }
 
@@ -58,17 +58,18 @@ public class GhostCon : MonoBehaviour
                 transform.Translate(new Vector3(0f, -vertMove, 0f) * moveSpeed/2 * Time.deltaTime);
             }
         }
-        if (canLook)
+        /*if (canLook)
         {
             //player look
             lookX += Input.GetAxis("Mouse X") * lookSpeed;
             lookY -= Input.GetAxis("Mouse Y") * lookSpeed;
 
-            //lookY = Mathf.Clamp(lookY, -.25f, 35f);
+            lookY = Mathf.Clamp(lookY, -.25f, 35f);
 
             cam.rotation = Quaternion.Euler(new Vector3(lookY, lookX, 0f));
             transform.rotation = Quaternion.Euler(new Vector3(0f, lookX, 0f));
-        }
+        }*/
+
 
         //extended functionality
         OnPauseAndResume();
