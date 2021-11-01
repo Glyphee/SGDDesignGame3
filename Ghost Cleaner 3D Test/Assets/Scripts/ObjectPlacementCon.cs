@@ -45,7 +45,7 @@ public class ObjectPlacementCon : MonoBehaviour
                         o.transform.position = g.transform.position;
                         o.transform.rotation = g.transform.rotation;
                         placed++;
-                        o.gameObject.GetComponent<Collider>().enabled = false;
+                        o.gameObject.GetComponent<Collider>().isTrigger = false;
 
                         print("Objects in place: " + placed.ToString());
                     }

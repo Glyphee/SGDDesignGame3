@@ -120,6 +120,7 @@ public class GhostCon : MonoBehaviour
         {
             AudioCon.sfx.PlayUnpossess();
             holding.transform.parent = null;
+            holding = null;
             possessing = false;
             ghostBody.SetActive(true); on = true;
             Debug.Log("unparented object now");
