@@ -40,10 +40,20 @@ public class ObjectPlacementCon : MonoBehaviour
             {
                 if(Vector3.Distance(o.transform.position, g.transform.position) < 1f && o.transform.parent == null)
                 {
-                    o.transform.position = g.transform.position;
-                    o.transform.rotation = g.transform.rotation;
-                    placed++;
-                    print("Objects in place: " + placed.ToString());
+                    if(System.Array.IndexOf(objectsToPlace, o) == System.Array.IndexOf(ghostObjects, g))
+                    {
+                        o.transform.position = g.transform.position;
+                        o.transform.rotation = g.transform.rotation;
+                        placed++;
+                        o.gameObject.GetComponent<Collider>().enabled = false;
+
+                        print("Objects in place: " + placed.ToString());
+                    }
+                    else
+                    {
+                        print("Not the right place for this object");
+                    }
+                    
                 }
             }
         }

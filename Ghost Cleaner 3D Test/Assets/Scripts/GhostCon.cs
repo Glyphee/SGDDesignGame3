@@ -45,18 +45,8 @@ public class GhostCon : MonoBehaviour
             //player movement
             float moveX = Input.GetAxis("Horizontal");
             float moveY = Input.GetAxis("Vertical");
-            float vertMove = 1f;
 
-            transform.Translate(new Vector3(moveX, 0f, moveY) * moveSpeed * Time.deltaTime);
-
-            if (Input.GetKey(KeyCode.Q))
-            {
-                transform.Translate(new Vector3(0f, vertMove, 0f) * moveSpeed/2 * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.E))
-            {
-                transform.Translate(new Vector3(0f, -vertMove, 0f) * moveSpeed/2 * Time.deltaTime);
-            }
+            transform.Translate(new Vector3(moveX, 0f, moveY) * moveSpeed * Time.deltaTime);            
         }
         /*if (canLook)
         {

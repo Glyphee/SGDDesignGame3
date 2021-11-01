@@ -295,7 +295,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6110088761329ef4ea9de0e91485af64, type: 2}
+  - {fileID: 2100000, guid: 8722601c885dda94e8d3db63e1853ef2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1176,7 +1176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6110088761329ef4ea9de0e91485af64, type: 2}
+  - {fileID: 2100000, guid: 0a472d677200de548857bf1dcfcd0d66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1743,7 +1743,6 @@ MonoBehaviour:
   lookSpeed: 3
   pausePanel: {fileID: 1080695568}
   ghostBody: {fileID: 1961165819}
-  camPosition: {fileID: 1913213265}
 --- !u!143 &1790788811
 CharacterController:
   m_ObjectHideFlags: 0
