@@ -45,6 +45,7 @@ public class UIController : MonoBehaviour
     public void LoadMenuLevel()
     {
         StartCoroutine(LoadLevel(0));
+        Debug.Log("menu loaded");
     }
 
     public void LoadLevelOne()

@@ -12,6 +12,7 @@ public class ObjectPlacementCon : MonoBehaviour
     [Header("UI Values")]
     [SerializeField] Text timerTxt;
     float gameTime;
+    float startTime;
     float stoppedTime;
     bool levelDone;
 
@@ -19,6 +20,7 @@ public class ObjectPlacementCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startTime = Time.time;
         StartCoroutine(DoPlacementCheck());
         levelDone = false;
     }
@@ -58,9 +60,9 @@ public class ObjectPlacementCon : MonoBehaviour
             }
         }
 
-        if(placed == ghostObjects.Length)
-        {
-            //check if they're all in the right place, and if so, stop the timer
+        //check if they're all in the right place, and if so, stop the timer
+        if (placed == ghostObjects.Length)
+        {            
             levelDone = true;
             stoppedTime = gameTime;
             print("You did it! It took " + stoppedTime.ToString());
@@ -83,16 +85,15 @@ public class ObjectPlacementCon : MonoBehaviour
         {
             return;
         }
-
-        gameTime = Time.time;
+        gameTime = Time.time - startTime;
         DisplayTime(gameTime);
     }
+
     void DisplayTime(float timeToDisplay)
     {
         timeToDisplay += 1;
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-
         timerTxt.text = "Time Passed: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
     #endregion
