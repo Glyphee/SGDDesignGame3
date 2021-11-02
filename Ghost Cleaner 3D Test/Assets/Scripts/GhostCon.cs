@@ -31,7 +31,7 @@ public class GhostCon : MonoBehaviour
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
-        cam.position = camPosition.position; cam.rotation = Quaternion.Euler(35, -31, -4);
+        cam.position = camPosition.position; cam.rotation = Quaternion.Euler(35, -45, 0);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         canGo = true; //canLook = true;
