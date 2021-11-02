@@ -71,9 +71,10 @@ public class ObjectPlacementCon : MonoBehaviour
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
             stoppedTime = gameTime;
-            winPanel.gameObject.SetActive(true);
-            winStatsTxt.text = "You did it! It took " + stoppedTime.ToString();
+            DisplayTime(stoppedTime);            
+            winPanel.gameObject.SetActive(true);            
             print("You did it! It took " + stoppedTime.ToString());
         }
     }
@@ -104,6 +105,7 @@ public class ObjectPlacementCon : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerTxt.text = "Time Passed: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+        winStatsTxt.text = "It took: " + string.Format("{0:00}:{1:00}", minutes, seconds) + " to clean the room!";
     }
     #endregion
 }
