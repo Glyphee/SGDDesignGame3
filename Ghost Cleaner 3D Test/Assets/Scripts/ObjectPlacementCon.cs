@@ -11,6 +11,8 @@ public class ObjectPlacementCon : MonoBehaviour
 
     [Header("UI Values")]
     [SerializeField] Text timerTxt;
+    [SerializeField] Image winPanel;
+    [SerializeField] Text winStatsTxt;
     float gameTime;
     float startTime;
     float stoppedTime;
@@ -23,6 +25,8 @@ public class ObjectPlacementCon : MonoBehaviour
         startTime = Time.time;
         StartCoroutine(DoPlacementCheck());
         levelDone = false;
+
+        winPanel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -62,9 +66,14 @@ public class ObjectPlacementCon : MonoBehaviour
 
         //check if they're all in the right place, and if so, stop the timer
         if (placed == ghostObjects.Length)
-        {            
+        {
             levelDone = true;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             stoppedTime = gameTime;
+            winPanel.gameObject.SetActive(true);
+            winStatsTxt.text = "You did it! It took " + stoppedTime.ToString();
             print("You did it! It took " + stoppedTime.ToString());
         }
     }
