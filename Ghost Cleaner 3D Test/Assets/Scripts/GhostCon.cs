@@ -98,7 +98,7 @@ public class GhostCon : MonoBehaviour
         {
             if(holding != null)
             {
-                if (Vector3.Distance(chrCon.transform.position, holding.transform.position) <= 1f)
+                if (Vector3.Distance(chrCon.transform.position, holding.transform.position) <= 2f)
                 {
                     AudioCon.sfx.PlayPossess();
                     ghostBody.SetActive(false); on = false;
