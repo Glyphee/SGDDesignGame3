@@ -8,7 +8,7 @@ public class GhostCon : MonoBehaviour
     [Header("Move and Look Values")]
     public float moveSpeed; public float lookSpeed;
     float lookY, lookX;
-    public static bool canGo, canLook, paused;    
+    public static bool canGo, canLook, paused;
 
     [Header("Gameplay values")]
     bool on;
@@ -16,7 +16,7 @@ public class GhostCon : MonoBehaviour
     private Transform cam;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject ghostBody;
-    //[SerializeField] Transform camPosition;
+    [SerializeField] Transform camPosition;
     GameObject player;
     GameObject holding;
     CharacterController chrCon;
@@ -31,7 +31,7 @@ public class GhostCon : MonoBehaviour
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
-        //cam.position = camPosition.position;
+        cam.position = camPosition.position; cam.rotation = Quaternion.Euler(35, -31, -4);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         canGo = true; //canLook = true;
