@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     public Animator transition;
     public GameObject helpPanel;
     public GameObject creditsPanel;
+    public GameObject pausePanel;
     public float transitionTime = 1f;
 
     // Start is called before the first frame update
@@ -75,5 +76,10 @@ public class UIController : MonoBehaviour
     public void NextLevelNoTransition(string level)
     {
         SceneManager.LoadScene(level);
+    }
+
+    public void OnReturnButtonClick()
+    {
+        pausePanel.SetActive(false);
     }
 }

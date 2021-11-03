@@ -73,21 +73,21 @@ public class GhostCon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!paused)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                pausePanel.SetActive(true);
-                Time.timeScale = 0;
-                canGo = false; canLook = false; paused = true;
-            }
-            else if (paused)
+            if (pausePanel.activeSelf)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 pausePanel.SetActive(false);
                 Time.timeScale = 1;
                 canGo = true; canLook = true; paused = false;
+            }
+            else if (!pausePanel.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                pausePanel.SetActive(true);
+                Time.timeScale = 0;
+                canGo = false; canLook = false; paused = true;
             }
         }
     }    
