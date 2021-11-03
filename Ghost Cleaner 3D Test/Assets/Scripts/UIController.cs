@@ -45,13 +45,14 @@ public class UIController : MonoBehaviour
 
     public void LoadMenuLevel()
     {
-        StartCoroutine(LoadLevel(0));
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
         Debug.Log("menu loaded");
     }
 
     public void LoadLevelOne()
     {
-        StartCoroutine(LoadLevel(1));
+        SceneManager.LoadScene(1);
     }
 
     public void LoadCurrentLevel()
