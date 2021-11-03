@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - prop
+  - teleport
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostProcessing
   - Water
   - UI
   - 
