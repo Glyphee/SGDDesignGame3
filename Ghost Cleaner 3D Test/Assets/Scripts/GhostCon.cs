@@ -13,7 +13,8 @@ public class GhostCon : MonoBehaviour
     [Header("Gameplay values")]
     bool on;
     bool possessing;
-    private Transform cam;
+    Transform cam;
+    [SerializeField] Transform origin;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject ghostBody;
     [SerializeField] Transform camPosition;
@@ -127,6 +128,7 @@ public class GhostCon : MonoBehaviour
             Debug.Log("unparented object now");
         }
     }
+    #endregion
 
     void OnTriggerEnter(Collider col)
     {
@@ -135,6 +137,10 @@ public class GhostCon : MonoBehaviour
             holding = col.gameObject;
             print("found an object");
         }
-    }
-    #endregion    
+
+        if (col.gameObject.CompareTag("teleport"))
+        {
+            player.transform.position = origin.transform.position;
+        }
+    }    
 }
