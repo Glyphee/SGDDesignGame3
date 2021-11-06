@@ -125,6 +125,7 @@ public class GhostCon : MonoBehaviour
             }
             else
             {
+                AudioCon.sfx.PlayTooFar();
                 print("have not started to clean");
             }
         }
