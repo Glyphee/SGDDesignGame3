@@ -42,7 +42,6 @@ public class UIController : MonoBehaviour
 
     public void LoadMenuLevel()
     {
-        Time.timeScale = 1;
         StartCoroutine(LoadLevel(0));
     }
 
@@ -53,7 +52,6 @@ public class UIController : MonoBehaviour
 
     public void LoadCurrentLevel()
     {
-        Time.timeScale = 1;
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 

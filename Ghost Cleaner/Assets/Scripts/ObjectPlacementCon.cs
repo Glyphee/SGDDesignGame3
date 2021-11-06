@@ -68,7 +68,7 @@ public class ObjectPlacementCon : MonoBehaviour
         if (placed == ghostObjects.Length)
         {
             levelDone = true;
-            //Time.timeScale = 0;
+            GhostCon.canGo = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
