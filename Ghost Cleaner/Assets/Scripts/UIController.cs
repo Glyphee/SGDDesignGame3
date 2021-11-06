@@ -5,18 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+    [Header("UI Elements")]
     public Animator transition;
     public GameObject helpPanel;
     public GameObject creditsPanel;
     public GameObject pausePanel;
     public float transitionTime = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
+    //Button Events
     public void OnClickQuitButton() //Quit
     {
         Application.Quit();
@@ -45,6 +42,7 @@ public class UIController : MonoBehaviour
 
     public void LoadMenuLevel()
     {
+        Time.timeScale = 1;
         StartCoroutine(LoadLevel(0));
     }
 
@@ -55,20 +53,20 @@ public class UIController : MonoBehaviour
 
     public void LoadCurrentLevel()
     {
+        Time.timeScale = 1;
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void LoadNextLevel()
     {
+        Time.timeScale = 1;
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
-
         yield return new WaitForSeconds(transitionTime);
-
         SceneManager.LoadScene(levelIndex);
     }
 
