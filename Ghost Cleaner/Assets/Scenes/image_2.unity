@@ -338,7 +338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a2e830b7420fda42ba46d9a9c41376e, type: 2}
+  - {fileID: 2100000, guid: 9257630be9420194c84c34e637338420, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3712,7 +3712,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a2e830b7420fda42ba46d9a9c41376e, type: 2}
+  - {fileID: 2100000, guid: 9257630be9420194c84c34e637338420, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4893,7 +4893,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_Intensity: 1.1
+  m_Intensity: 2.11
   m_Range: 5.91
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5542,11 +5542,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The ghostly outlines of furniture are a little harder to see!
+  m_Text: 'Your colleauges have left you ghostly markings to help you clean up!
 
 
-    The
-    ground floor of the house is certainly brighter than the cellar!'
+    They
+    are especially visible in the dark of the cellar!'
 --- !u!222 &1014903210
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5686,7 +5686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ce705e86b2981b42810dca8ece3a28d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 978a58885aac1ea46afafeb73aefb877, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5756,7 +5756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1092479559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5948,7 +5948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1126291524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6144,7 +6144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a2e830b7420fda42ba46d9a9c41376e, type: 2}
+  - {fileID: 2100000, guid: 9257630be9420194c84c34e637338420, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6763,7 +6763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1263714620
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6864,7 +6864,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_Intensity: 0.75
+  m_Intensity: 2.39
   m_Range: 2.558769
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7619,7 +7619,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a2e830b7420fda42ba46d9a9c41376e, type: 2}
+  - {fileID: 2100000, guid: 9257630be9420194c84c34e637338420, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8008,7 +8008,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_Intensity: 0.83
+  m_Intensity: 2.11
   m_Range: 5.91
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8642,7 +8642,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_Intensity: 1.35
+  m_Intensity: 2.13
   m_Range: 2.82
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8884,7 +8884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1699993904
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9650,7 +9650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1790788810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10508,7 +10508,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a2e830b7420fda42ba46d9a9c41376e, type: 2}
+  - {fileID: 2100000, guid: 9257630be9420194c84c34e637338420, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11378,7 +11378,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_Intensity: 0.63
+  m_Intensity: 2.11
   m_Range: 5.91
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12162,11 +12162,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The ghostly outlines of furniture are a little harder to see!
+  m_Text: 'Your colleauges have left you ghostly markings to help you clean up!
 
 
-    The
-    ground floor of the house is certainly brighter than the cellar!'
+    They
+    are especially visible in the dark of the cellar!'
 --- !u!222 &2085540062
 CanvasRenderer:
   m_ObjectHideFlags: 0

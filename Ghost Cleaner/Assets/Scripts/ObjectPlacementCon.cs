@@ -11,8 +11,10 @@ public class ObjectPlacementCon : MonoBehaviour
 
     [Header("UI Values")]
     [SerializeField] Text timerTxt;
+    [SerializeField] Text timerTxtShdw;
     [SerializeField] Image winPanel;
     [SerializeField] Text winStatsTxt;
+    [SerializeField] Text winStatsTxtShdw;
     float gameTime;
     float startTime;
     float stoppedTime;
@@ -105,7 +107,9 @@ public class ObjectPlacementCon : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerTxtShdw.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         winStatsTxt.text = "It took: " + string.Format("{0:00}:{1:00}", minutes, seconds) + " to clean the room!";
+        winStatsTxtShdw.text = "It took: " + string.Format("{0:00}:{1:00}", minutes, seconds) + " to clean the room!";
     }
     #endregion
 }
