@@ -21,6 +21,7 @@ public class GhostCon : MonoBehaviour
     GameObject player;
     GameObject holding;
     CharacterController chrCon;
+    int coinCount;
 
 
     void Start()
@@ -29,6 +30,7 @@ public class GhostCon : MonoBehaviour
         chrCon = player.GetComponent<CharacterController>();
         on = true; possessing = false;
         holding = null;
+        coinCount = 0;
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
@@ -152,6 +154,14 @@ public class GhostCon : MonoBehaviour
         if (col.gameObject.CompareTag("teleport"))
         {
             player.transform.position = origin.transform.position;
+        }
+
+        if (col.gameObject.CompareTag("coin"))
+        {
+            AudioCon.sfx.PlayCoinGet();
+            coinCount++;
+            Destroy(col.gameObject);
+            print("got coin!");
         }
     }    
 }

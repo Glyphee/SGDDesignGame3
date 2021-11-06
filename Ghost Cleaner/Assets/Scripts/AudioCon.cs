@@ -10,6 +10,7 @@ public class AudioCon : MonoBehaviour
     [SerializeField] AudioClip possess;
     [SerializeField] AudioClip unpossess;
     [SerializeField] AudioClip tooFar;
+    [SerializeField] AudioClip coin;
 
 
     void Awake()
@@ -37,5 +38,10 @@ public class AudioCon : MonoBehaviour
     public void PlayTooFar()
     {
         GetComponent<AudioSource>().PlayOneShot(tooFar);
+    }
+
+    public void PlayCoinGet()
+    {
+        GetComponent<AudioSource>().PlayOneShot(coin);
     }
 }
