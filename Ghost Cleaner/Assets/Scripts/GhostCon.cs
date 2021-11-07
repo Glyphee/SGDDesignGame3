@@ -52,35 +52,12 @@ public class GhostCon : MonoBehaviour
 
             transform.Translate(moveDir * moveSpeed * Time.deltaTime);
             ghostBody.transform.LookAt(moveDir + ghostBody.transform.position);
-
-            /*float vertMove = 1f;
-            if (Input.GetKey(KeyCode.Q))
-            {
-                transform.Translate(new Vector3(0f, vertMove, 0f) * moveSpeed / 2 * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.E))
-            {
-                transform.Translate(new Vector3(0f, -vertMove, 0f) * moveSpeed / 2 * Time.deltaTime);
-            }*/
         }
-        /*if (canLook)
-        {
-            //player look
-            lookX += Input.GetAxis("Mouse X") * lookSpeed;
-            lookY -= Input.GetAxis("Mouse Y") * lookSpeed;
-
-            lookY = Mathf.Clamp(lookY, -.25f, 35f);
-
-            cam.rotation = Quaternion.Euler(new Vector3(lookY, lookX, 0f));
-            transform.rotation = Quaternion.Euler(new Vector3(0f, lookX, 0f));
-        }*/
-
-        //extended functionality
         OnPauseAndResume();
-        Possession();        
+        Possession();
+        CamRotate();
     }
 
-    //for pausing the game
     void OnPauseAndResume()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -104,7 +81,6 @@ public class GhostCon : MonoBehaviour
         }
     }    
 
-    #region Possession Mechanic
     void Possession()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !possessing)
@@ -141,7 +117,6 @@ public class GhostCon : MonoBehaviour
             Debug.Log("unparented object now");
         }
     }
-    #endregion
 
     void OnTriggerEnter(Collider col)
     {
@@ -164,4 +139,20 @@ public class GhostCon : MonoBehaviour
             print("got coin!");
         }
     }    
+
+    void CamRotate()
+    {
+        if (Input.GetKeyDown("e"))
+        {
+            //transform.localRotation = new Quaternion(0, transform.localRotation.y + -0.25f, 0, 0);
+            transform.localRotation *= Quaternion.Euler(0, -90, 0);
+            print("turn camera right\n" + transform.localRotation);
+        }
+        else if (Input.GetKeyDown("q"))
+        {
+            //transform.localRotation = new Quaternion(0, transform.localRotation.y + 0.25f, 0, 0);
+            transform.localRotation *= Quaternion.Euler(0, 90, 0);
+            print("turn camera left\n" + transform.localRotation);
+        }
+    }
 }
