@@ -54,14 +54,14 @@ public class ObjectPlacementCon : MonoBehaviour
                         o.transform.rotation = g.transform.rotation;
                         placed++;
                         o.gameObject.GetComponent<Collider>().isTrigger = false;
+                        g.gameObject.SetActive(false);
 
-                        print("Objects in place: " + placed.ToString());
+                        //print("Objects in place: " + placed.ToString());
                     }
                     else
                     {
-                        print("Not the right place for this object");
-                    }
-                    
+                        //print("Not the right place for this object");
+                    }                    
                 }
             }
         }
@@ -77,7 +77,7 @@ public class ObjectPlacementCon : MonoBehaviour
             stoppedTime = gameTime;
             DisplayTime(stoppedTime);            
             winPanel.gameObject.SetActive(true);            
-            print("You did it! It took " + stoppedTime.ToString());
+            //print("You did it! It took " + stoppedTime.ToString());
         }
     }
 

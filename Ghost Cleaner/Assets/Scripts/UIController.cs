@@ -42,6 +42,7 @@ public class UIController : MonoBehaviour
 
     public void LoadMenuLevel()
     {
+        GhostCon.totalCoins = 0;
         Time.timeScale = 1;
         StartCoroutine(LoadLevel(0));
     }
@@ -53,8 +54,9 @@ public class UIController : MonoBehaviour
 
     public void LoadCurrentLevel()
     {
+        GhostCon.totalCoins -= GhostCon.currentLevelTotal;
         Time.timeScale = 1;
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));        
     }
 
     public void LoadNextLevel()

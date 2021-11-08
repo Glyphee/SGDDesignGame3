@@ -21,7 +21,9 @@ public class GhostCon : MonoBehaviour
     GameObject player;
     GameObject holding;
     CharacterController chrCon;
-    static int coinCount = 0;
+    int levelCoinCount;
+    public static int totalCoins = 0;    
+    public static int currentLevelTotal;
     [SerializeField] Text coinTxt;
 
 
@@ -31,6 +33,7 @@ public class GhostCon : MonoBehaviour
         chrCon = player.GetComponent<CharacterController>();
         on = true; possessing = false;
         holding = null;
+        levelCoinCount = 0;
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
@@ -39,8 +42,6 @@ public class GhostCon : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         canGo = true; //canLook = true;
         paused = false;
-
-        print("coins held" + coinCount.ToString());
     }
 
     void Update()
@@ -59,7 +60,7 @@ public class GhostCon : MonoBehaviour
         Possession();
         CamRotate();
 
-        coinTxt.text = "Coins Collected: " + coinCount.ToString();
+        coinTxt.text = "Coins Collected: " + levelCoinCount.ToString();        
     }
 
     void OnPauseAndResume()
@@ -127,7 +128,6 @@ public class GhostCon : MonoBehaviour
         if (col.gameObject.CompareTag("prop"))
         {            
             holding = col.gameObject;
-            print("found an object");
         }
 
         if (col.gameObject.CompareTag("teleport"))
@@ -138,9 +138,9 @@ public class GhostCon : MonoBehaviour
         if (col.gameObject.CompareTag("coin"))
         {
             AudioCon.sfx.PlayCoinGet();
-            coinCount++;
+            CoinTracking();
             Destroy(col.gameObject);
-            print("got coin!");
+            print("got coin!");            
         }
     }    
 
@@ -158,5 +158,15 @@ public class GhostCon : MonoBehaviour
             transform.localRotation *= Quaternion.Euler(0, 90, 0);
             print("turn camera left\n" + transform.localRotation);
         }
+    }
+
+    void CoinTracking()
+    {        
+        levelCoinCount++;
+        currentLevelTotal = levelCoinCount;
+        totalCoins += 1;
+
+        Debug.Log("Current level total: " + currentLevelTotal.ToString());
+        Debug.Log("Level coin count: " + levelCoinCount.ToString() + "| All across levels: " + totalCoins.ToString());
     }
 }
