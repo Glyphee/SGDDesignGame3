@@ -21,7 +21,8 @@ public class GhostCon : MonoBehaviour
     GameObject player;
     GameObject holding;
     CharacterController chrCon;
-    int coinCount;
+    static int coinCount = 0;
+    [SerializeField] Text coinTxt;
 
 
     void Start()
@@ -30,7 +31,6 @@ public class GhostCon : MonoBehaviour
         chrCon = player.GetComponent<CharacterController>();
         on = true; possessing = false;
         holding = null;
-        coinCount = 0;
 
         //cam and movement values
         cam = GetComponentInChildren<Camera>().transform;
@@ -39,6 +39,8 @@ public class GhostCon : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         canGo = true; //canLook = true;
         paused = false;
+
+        print("coins held" + coinCount.ToString());
     }
 
     void Update()
@@ -56,6 +58,8 @@ public class GhostCon : MonoBehaviour
         OnPauseAndResume();
         Possession();
         CamRotate();
+
+        coinTxt.text = "Coins Collected: " + coinCount.ToString();
     }
 
     void OnPauseAndResume()
