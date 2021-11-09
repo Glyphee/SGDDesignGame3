@@ -25,6 +25,7 @@ public class GhostCon : MonoBehaviour
     public static int totalCoins = 0;    
     public static int currentLevelTotal;
     [SerializeField] Text coinTxt;
+    [SerializeField] Text coinTxtShdw;
 
 
     void Start()
@@ -60,7 +61,8 @@ public class GhostCon : MonoBehaviour
         Possession();
         CamRotate();
 
-        coinTxt.text = "Coins Collected: " + levelCoinCount.ToString();        
+        coinTxt.text = "x" + " " + levelCoinCount.ToString();
+        coinTxtShdw.text = "x" + " " + levelCoinCount.ToString();
     }
 
     void OnPauseAndResume()
