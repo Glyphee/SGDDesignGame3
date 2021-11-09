@@ -148,15 +148,24 @@ public class GhostCon : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            //transform.localRotation = new Quaternion(0, transform.localRotation.y + -0.25f, 0, 0);
-            transform.localRotation *= Quaternion.Euler(0, -90, 0);
-            print("turn camera right\n" + transform.localRotation);
+            //Turn cam to the right
+            this.gameObject.transform.rotation = Quaternion.Lerp(this.gameObject.transform.rotation, Quaternion.Euler(0, -45, 0), Time.time * 0.25f);
+            //StartCoroutine(CamRight());
+            print("right");
         }
         else if (Input.GetKeyDown("q"))
         {
-            //transform.localRotation = new Quaternion(0, transform.localRotation.y + 0.25f, 0, 0);
-            transform.localRotation *= Quaternion.Euler(0, 90, 0);
-            print("turn camera left\n" + transform.localRotation);
+            //Turn cam to the left
+            this.gameObject.transform.rotation = Quaternion.Lerp(this.gameObject.transform.rotation, Quaternion.Euler(0, 45, 0), Time.time * 0.25f);
+            //StartCoroutine(CamLeft());
+            print("left");
+        }
+        else if (Input.GetKey("q") == false && Input.GetKey("e") == false)
+        {
+            //Reset cam rotation
+            this.gameObject.transform.rotation = Quaternion.Lerp(this.gameObject.transform.rotation, Quaternion.Euler(0, 0, 0), Time.time * 0.25f);
+            //StartCoroutine(CamNormal());
+            print("center");
         }
     }
 
@@ -168,5 +177,41 @@ public class GhostCon : MonoBehaviour
 
         Debug.Log("Current level total: " + currentLevelTotal.ToString());
         Debug.Log("Level coin count: " + levelCoinCount.ToString() + "| All across levels: " + totalCoins.ToString());
+    }
+
+    IEnumerator CamRight()
+    {
+        while (this.gameObject.transform.rotation != Quaternion.Euler(0, -45, 0))
+        {
+            this.gameObject.transform.rotation = Quaternion.Lerp(this.gameObject.transform.rotation, Quaternion.Euler(0, -45, 0), Time.time * 1f);
+
+            // Yield here
+            yield return null;
+        }
+        yield return null;
+    }
+
+    IEnumerator CamLeft()
+    {
+        while (this.gameObject.transform.rotation != Quaternion.Euler(0, 45, 0))
+        {
+            this.gameObject.transform.rotation = Quaternion.Lerp(this.gameObject.transform.rotation, Quaternion.Euler(0, 45, 0), Time.time * 1f);
+
+            // Yield here
+            yield return null;
+        }
+        yield return null;
+    }
+
+    IEnumerator CamNormal()
+    {
+        while (this.gameObject.transform.rotation != Quaternion.Euler(0, 0, 0))
+        {
+            this.gameObject.transform.rotation = Quaternion.Lerp(this.gameObject.transform.rotation, Quaternion.Euler(0, 0, 0), Time.time * 1f);
+
+            // Yield here
+            yield return null;
+        }
+        yield return null;
     }
 }
