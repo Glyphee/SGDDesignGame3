@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -11,7 +12,16 @@ public class UIController : MonoBehaviour
     public GameObject creditsPanel;
     public GameObject pausePanel;
     public float transitionTime = 1f;
+    [SerializeField] Text winTokenTxt;
 
+
+    void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "win")
+        {
+            winTokenTxt.text = "collected: " + GhostCon.totalCoins.ToString();
+        }
+    }
 
     //Button Events
     public void OnClickQuitButton() //Quit
