@@ -55,12 +55,13 @@ public class ObjectPlacementCon : MonoBehaviour
                         placed++;
                         o.gameObject.GetComponent<Collider>().isTrigger = false;
                         g.gameObject.SetActive(false);
+                        o.gameObject.GetComponentInChildren<Light>().enabled = false;
 
                         //print("Objects in place: " + placed.ToString());
                     }
                     else
                     {
-                        //print("Not the right place for this object");
+                        print("Not the right place for this object");
                     }                    
                 }
             }
