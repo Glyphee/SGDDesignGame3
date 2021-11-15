@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.5645241, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2478,8 +2478,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519744586}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -26.15, y: 15.61, z: -23.29}
-  m_LocalScale: {x: 67.39298, y: 4.1938, z: 1}
+  m_LocalPosition: {x: -28.06, y: 15.61, z: -25.2}
+  m_LocalScale: {x: 132.54178, y: 4.1938, z: 1}
   m_Children: []
   m_Father: {fileID: 1084908992}
   m_RootOrder: 0
@@ -4097,6 +4097,7 @@ MonoBehaviour:
   creditsPanel: {fileID: 0}
   pausePanel: {fileID: 939781426}
   transitionTime: 1
+  winTokenTxt: {fileID: 0}
 --- !u!4 &750593551
 Transform:
   m_ObjectHideFlags: 0
@@ -4348,7 +4349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762673751}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 12.59, y: 15.61, z: -28.19}
+  m_LocalPosition: {x: 13.42, y: 15.61, z: -29.02}
   m_LocalScale: {x: 1, y: 4.1938, z: 82.56561}
   m_Children: []
   m_Father: {fileID: 1084908992}
@@ -9724,8 +9725,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785479409}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -14.6, y: 15.61, z: -1}
-  m_LocalScale: {x: 1, y: 4.1938, z: 76.56051}
+  m_LocalPosition: {x: -15.75, y: 15.61, z: 0.15}
+  m_LocalScale: {x: 1, y: 4.1938, z: 94.15411}
   m_Children: []
   m_Father: {fileID: 1084908992}
   m_RootOrder: 2
@@ -9879,7 +9880,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c416f3fc0ede52849a02d764e179c44a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 0.5
   Loop: 1
   Mute: 0
@@ -10064,8 +10065,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808825628}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 9.24, y: 15.61, z: -0.96}
-  m_LocalScale: {x: 61.91698, y: 4.1938, z: 1}
+  m_LocalPosition: {x: 9.89, y: 15.61, z: -0.31}
+  m_LocalScale: {x: 80.423965, y: 4.1938, z: 1}
   m_Children: []
   m_Father: {fileID: 1084908992}
   m_RootOrder: 3
@@ -10831,7 +10832,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -10
+  near clip plane: -20
   far clip plane: 1000
   field of view: 40
   orthographic: 1
