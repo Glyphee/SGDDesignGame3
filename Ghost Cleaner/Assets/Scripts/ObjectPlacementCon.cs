@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjectPlacementCon : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class ObjectPlacementCon : MonoBehaviour
     [SerializeField] Text timerTxtShdw;
     [SerializeField] Image winPanel;
     [SerializeField] Text winStatsTxt;
-    [SerializeField] Text winStatsTxtShdw;
+    [SerializeField] Text winStatsTxtShdw;    
     float gameTime;
     float startTime;
     float stoppedTime;
-    bool levelDone;
+    bool levelDone;    
+    public static float totalTime;
+    public static float[] levelTimes = new float[3];
 
 
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class ObjectPlacementCon : MonoBehaviour
     {
         //the timer for each level; should add rating tracking here later
         Timer();
+        print("Total time is: " + totalTime.ToString());
     }
 
     //the following should check if objects are placed in the correct location, and if so, freeze the timer and provide a next level/menu option
@@ -77,9 +81,26 @@ public class ObjectPlacementCon : MonoBehaviour
 
             stoppedTime = gameTime;
             DisplayTime(stoppedTime);            
-            winPanel.gameObject.SetActive(true);            
-            //print("You did it! It took " + stoppedTime.ToString());
+            winPanel.gameObject.SetActive(true);
+            
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                levelTimes[0] = stoppedTime;
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                levelTimes[1] = stoppedTime;
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                levelTimes[2] = stoppedTime;
+            }
+            totalTime = (levelTimes[0] + levelTimes[1] + levelTimes[2]);
         }
+        if (SceneManager.GetActiveScene().name == "win")
+        {
+            DisplayTime(totalTime);
+        }        
     }
 
     IEnumerator DoPlacementCheck()

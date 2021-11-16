@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     public GameObject pausePanel;
     public float transitionTime = 1f;
     [SerializeField] Text winTokenTxt;
+    [SerializeField] Text totalTimeTxt;
 
 
     void Start()
@@ -20,6 +21,11 @@ public class UIController : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "win")
         {
             winTokenTxt.text = "collected: " + GhostCon.totalCoins.ToString();
+
+            float timeToDisplay = ObjectPlacementCon.totalTime;
+            float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+            float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+            totalTimeTxt.text = "Total: " + string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
 

@@ -86,7 +86,7 @@ public class GhostCon : MonoBehaviour
                 canGo = false; canLook = false; paused = true;
             }
         }
-    }    
+    }
 
     void Possession()
     {
@@ -100,7 +100,7 @@ public class GhostCon : MonoBehaviour
                     ghostBody.SetActive(false); on = false;
                     holding.transform.SetParent(player.transform);
                     possessing = true;
-                    Debug.Log("parented object");
+                    //Debug.Log("parented object");
                 }
                 else
                 {
@@ -121,7 +121,7 @@ public class GhostCon : MonoBehaviour
             holding = null;
             possessing = false;
             ghostBody.SetActive(true); on = true;
-            Debug.Log("unparented object now");
+            //Debug.Log("unparented object now");
         }
     }
 
@@ -142,7 +142,7 @@ public class GhostCon : MonoBehaviour
             AudioCon.sfx.PlayCoinGet();
             CoinTracking();
             Destroy(col.gameObject);
-            print("got coin!");            
+            //print("got coin!");            
         }
     }    
 
@@ -177,8 +177,8 @@ public class GhostCon : MonoBehaviour
         currentLevelTotal = levelCoinCount;
         totalCoins += 1;
 
-        Debug.Log("Current level total: " + currentLevelTotal.ToString());
-        Debug.Log("Level coin count: " + levelCoinCount.ToString() + "| All across levels: " + totalCoins.ToString());
+        //Debug.Log("Current level total: " + currentLevelTotal.ToString());
+        //Debug.Log("Level coin count: " + levelCoinCount.ToString() + "| All across levels: " + totalCoins.ToString());
     }
 
     IEnumerator CamRight()
