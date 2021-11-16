@@ -20,12 +20,12 @@ public class UIController : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "win")
         {
-            winTokenTxt.text = "collected: " + GhostCon.totalCoins.ToString();
+            winTokenTxt.text = "x" + " " + GhostCon.totalCoins.ToString();
 
             float timeToDisplay = ObjectPlacementCon.totalTime;
             float minutes = Mathf.FloorToInt(timeToDisplay / 60);
             float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-            totalTimeTxt.text = "Total: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+            totalTimeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
 
@@ -65,7 +65,7 @@ public class UIController : MonoBehaviour
 
     public void LoadLevelOne()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadLevel(1));
     }
 
     public void LoadCurrentLevel()
