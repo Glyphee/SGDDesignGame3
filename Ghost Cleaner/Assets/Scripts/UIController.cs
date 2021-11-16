@@ -65,6 +65,7 @@ public class UIController : MonoBehaviour
 
     public void LoadLevelOne()
     {
+        GhostCon.totalCoins -= GhostCon.totalCoins;
         StartCoroutine(LoadLevel(1));
     }
 

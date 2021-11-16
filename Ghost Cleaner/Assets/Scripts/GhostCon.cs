@@ -177,8 +177,8 @@ public class GhostCon : MonoBehaviour
         currentLevelTotal = levelCoinCount;
         totalCoins += 1;
 
-        //Debug.Log("Current level total: " + currentLevelTotal.ToString());
-        //Debug.Log("Level coin count: " + levelCoinCount.ToString() + "| All across levels: " + totalCoins.ToString());
+        Debug.Log("Current level total: " + currentLevelTotal.ToString());
+        Debug.Log("Level coin count: " + levelCoinCount.ToString() + "| All across levels: " + totalCoins.ToString());
     }
 
     IEnumerator CamRight()

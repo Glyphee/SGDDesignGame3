@@ -39,7 +39,7 @@ public class ObjectPlacementCon : MonoBehaviour
     {
         //the timer for each level; should add rating tracking here later
         Timer();
-        print("Total time is: " + totalTime.ToString());
+        //print("Total time is: " + totalTime.ToString());
     }
 
     //the following should check if objects are placed in the correct location, and if so, freeze the timer and provide a next level/menu option
