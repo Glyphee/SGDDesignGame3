@@ -128,8 +128,11 @@ public class GhostCon : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("prop"))
-        {            
-            holding = col.gameObject;
+        {
+            if (on)
+            {
+                holding = col.gameObject;
+            }
         }
 
         if (col.gameObject.CompareTag("teleport"))
