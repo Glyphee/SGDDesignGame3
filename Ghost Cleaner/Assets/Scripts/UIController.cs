@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public float transitionTime = 1f;
     [SerializeField] Text winTokenTxt;
     [SerializeField] Text totalTimeTxt;
+    [SerializeField] GameObject bonusPanel;
 
 
     void Start()
@@ -26,7 +27,16 @@ public class UIController : MonoBehaviour
             float minutes = Mathf.FloorToInt(timeToDisplay / 60);
             float seconds = Mathf.FloorToInt(timeToDisplay % 60);
             totalTimeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        }
+
+            if(GhostCon.totalCoins == 6)
+            {
+                bonusPanel.SetActive(true);
+            }
+            else
+            {
+                bonusPanel.SetActive(false);
+            }
+        }        
     }
 
     //Button Events
@@ -97,5 +107,10 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1; GhostCon.canGo = true;
         pausePanel.SetActive(false);
+    }
+
+    public void OnEnterBonusClick()
+    {
+        SceneManager.LoadScene(5);
     }
 }

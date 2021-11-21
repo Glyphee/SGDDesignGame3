@@ -61,8 +61,11 @@ public class GhostCon : MonoBehaviour
         Possession();
         CamRotate();
 
-        coinTxt.text = "x" + " " + levelCoinCount.ToString();
-        coinTxtShdw.text = "x" + " " + levelCoinCount.ToString();
+        if(coinTxt != null && coinTxtShdw != null)
+        {
+            coinTxt.text = "x" + " " + levelCoinCount.ToString();
+            coinTxtShdw.text = "x" + " " + levelCoinCount.ToString();
+        }
     }
 
     void OnPauseAndResume()
