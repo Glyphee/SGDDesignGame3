@@ -100,7 +100,9 @@ public class GhostCon : MonoBehaviour
                 if (Vector3.Distance(chrCon.transform.position, holding.transform.position) <= 2f)
                 {
                     AudioCon.sfx.PlayPossess();
-                    ghostBody.SetActive(false); on = false;
+
+                    ghostBody.SetActive(false);
+                    on = false;
                     holding.transform.SetParent(player.transform);
                     possessing = true;
                     //Debug.Log("parented object");
@@ -120,10 +122,12 @@ public class GhostCon : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space) && possessing)
         {
             AudioCon.sfx.PlayUnpossess();
+
+            ghostBody.SetActive(true);
+            on = true;
             holding.transform.parent = null;
             holding = null;
-            possessing = false;
-            ghostBody.SetActive(true); on = true;
+            possessing = false;            
             //Debug.Log("unparented object now");
         }
     }
