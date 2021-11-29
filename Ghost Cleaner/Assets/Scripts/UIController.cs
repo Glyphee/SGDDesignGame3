@@ -42,7 +42,7 @@ public class UIController : MonoBehaviour
             {
                 bonusPanel.SetActive(false);
             }
-        }        
+        }
     }
 
     //Button Events
@@ -118,5 +118,11 @@ public class UIController : MonoBehaviour
     public void OnEnterBonusClick()
     {
         SceneManager.LoadScene(5);
+    }
+
+    public void OnResetBestTimeClick()
+    {
+        PlayerPrefs.SetFloat("bestTime", 180f);
+        print("Best Time reset");
     }
 }

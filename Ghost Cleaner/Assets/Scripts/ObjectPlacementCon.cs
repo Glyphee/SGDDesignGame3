@@ -21,6 +21,7 @@ public class ObjectPlacementCon : MonoBehaviour
     float stoppedTime;
     bool levelDone;    
     public static float totalTime;
+    static public float bestTime;
     public static float[] levelTimes = new float[3];
 
 
@@ -100,14 +101,18 @@ public class ObjectPlacementCon : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "win")
         {
             DisplayTime(totalTime);
-            Debug.Log(PlayerPrefs.GetFloat("bestTime").ToString());
         }
 
-        PlayerPrefs.SetFloat("bestTime", totalTime);
-
-        if(PlayerPrefs.GetFloat("bestTime") < totalTime)
+        //for recording best clearance times
+        if (PlayerPrefs.HasKey("bestTime"))
         {
-            PlayerPrefs.SetFloat("bestTime", totalTime);
+            bestTime = totalTime;
+        }
+        PlayerPrefs.SetFloat("bestTime", bestTime);
+
+        if (bestTime < PlayerPrefs.GetFloat("bestTime"))
+        {
+            PlayerPrefs.SetFloat("bestTime", bestTime);
         }
     }
 
