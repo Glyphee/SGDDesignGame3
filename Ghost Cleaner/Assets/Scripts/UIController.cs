@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public float transitionTime = 1f;
     [SerializeField] Text winTokenTxt;
     [SerializeField] Text totalTimeTxt;
+    [SerializeField] Text bestTimeTxt;
     [SerializeField] GameObject bonusPanel;
 
 
@@ -28,7 +29,12 @@ public class UIController : MonoBehaviour
             float seconds = Mathf.FloorToInt(timeToDisplay % 60);
             totalTimeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-            if(GhostCon.totalCoins == 6)
+            float timeToDisplay2 = PlayerPrefs.GetFloat("bestTime");
+            float minutes2 = Mathf.FloorToInt(timeToDisplay2 / 60);
+            float seconds2 = Mathf.FloorToInt(timeToDisplay2 % 60);
+            bestTimeTxt.text = "Best Time: \n" + string.Format("{0:00}:{1:00}", minutes2, seconds2);
+
+            if (GhostCon.totalCoins == 6)
             {
                 bonusPanel.SetActive(true);
             }

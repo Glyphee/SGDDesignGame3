@@ -100,7 +100,15 @@ public class ObjectPlacementCon : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "win")
         {
             DisplayTime(totalTime);
-        }        
+            Debug.Log(PlayerPrefs.GetFloat("bestTime").ToString());
+        }
+
+        PlayerPrefs.SetFloat("bestTime", totalTime);
+
+        if(PlayerPrefs.GetFloat("bestTime") < totalTime)
+        {
+            PlayerPrefs.SetFloat("bestTime", totalTime);
+        }
     }
 
     IEnumerator DoPlacementCheck()
