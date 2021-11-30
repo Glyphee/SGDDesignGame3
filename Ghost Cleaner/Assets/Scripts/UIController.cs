@@ -121,9 +121,4 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene(5);
     }
-
-    public void OnResetBestTimeClick()
-    {
-        print("Best Time reset");
-    }
 }
