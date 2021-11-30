@@ -24,6 +24,8 @@ public class ObjectPlacementCon : MonoBehaviour
     public static float bestTime;
     public static float[] levelTimes = new float[3];
 
+    public static int round = 1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +35,7 @@ public class ObjectPlacementCon : MonoBehaviour
         levelDone = false;
 
         winPanel.gameObject.SetActive(false);
-
-        BestTimeKeeper();
+        StartCoroutine(CheckBestTime());
     }
 
     // Update is called once per frame
@@ -42,7 +43,6 @@ public class ObjectPlacementCon : MonoBehaviour
     {
         //the timer for each level; should add rating tracking here later
         Timer();
-        BestTimeUpdater();        
     }
 
     //the following should check if objects are placed in the correct location, and if so, freeze the timer and provide a next level/menu option
@@ -140,27 +140,25 @@ public class ObjectPlacementCon : MonoBehaviour
     void BestTimeKeeper()
     {
         //for recording best clearance times
-        if (PlayerPrefs.HasKey("bestTime"))
+        float newBest = totalTime;
+
+        if (newBest < bestTime)
+        {
+            bestTime = newBest;
+        }
+        else if (round == 1)
         {
             bestTime = totalTime;
         }
-        PlayerPrefs.SetFloat("bestTime", bestTime);
     }
 
-    void BestTimeUpdater()
+    IEnumerator CheckBestTime()
     {
-        //should reset the best time if it is lower than previous rounds
-        float newBestTime;
-        newBestTime = totalTime;
-
-        if (newBestTime < PlayerPrefs.GetFloat("bestTime"))
+        while (true)
         {
-            PlayerPrefs.SetFloat("bestTime", newBestTime);
-        }
-        else if (newBestTime >= bestTime)
-        {
-            PlayerPrefs.GetFloat("bestTime");
-        }
+            BestTimeKeeper();
+            yield return null;
+        }        
     }
     #endregion
 }

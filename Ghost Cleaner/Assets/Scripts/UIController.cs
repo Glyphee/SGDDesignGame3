@@ -29,10 +29,12 @@ public class UIController : MonoBehaviour
             float seconds = Mathf.FloorToInt(timeToDisplay % 60);
             totalTimeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-            float timeToDisplay2 = PlayerPrefs.GetFloat("bestTime");
+            float timeToDisplay2 = ObjectPlacementCon.bestTime;
             float minutes2 = Mathf.FloorToInt(timeToDisplay2 / 60);
             float seconds2 = Mathf.FloorToInt(timeToDisplay2 % 60);
             bestTimeTxt.text = "Best Time: \n" + string.Format("{0:00}:{1:00}", minutes2, seconds2);
+
+            ObjectPlacementCon.round++;
 
             if (GhostCon.totalCoins == 6)
             {
@@ -49,7 +51,6 @@ public class UIController : MonoBehaviour
     public void OnClickQuitButton() //Quit
     {
         Application.Quit();
-        PlayerPrefs.DeleteAll();
         print("This button works!");
     }
 
@@ -123,7 +124,6 @@ public class UIController : MonoBehaviour
 
     public void OnResetBestTimeClick()
     {
-        PlayerPrefs.SetFloat("bestTime", 180f);
         print("Best Time reset");
     }
 }
