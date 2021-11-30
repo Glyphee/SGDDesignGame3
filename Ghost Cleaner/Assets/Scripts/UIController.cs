@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
             float timeToDisplay2 = ObjectPlacementCon.bestTime;
             float minutes2 = Mathf.FloorToInt(timeToDisplay2 / 60);
             float seconds2 = Mathf.FloorToInt(timeToDisplay2 % 60);
-            bestTimeTxt.text = "Best Time: \n" + string.Format("{0:00}:{1:00}", minutes2, seconds2);
+            bestTimeTxt.text = string.Format("{0:00}:{1:00}", minutes2, seconds2);
 
             ObjectPlacementCon.round++;
 
