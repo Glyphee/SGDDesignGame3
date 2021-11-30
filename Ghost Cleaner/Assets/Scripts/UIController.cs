@@ -49,6 +49,7 @@ public class UIController : MonoBehaviour
     public void OnClickQuitButton() //Quit
     {
         Application.Quit();
+        PlayerPrefs.DeleteAll();
         print("This button works!");
     }
 

@@ -21,7 +21,7 @@ public class ObjectPlacementCon : MonoBehaviour
     float stoppedTime;
     bool levelDone;    
     public static float totalTime;
-    static public float bestTime;
+    public static float bestTime;
     public static float[] levelTimes = new float[3];
 
 
@@ -33,6 +33,8 @@ public class ObjectPlacementCon : MonoBehaviour
         levelDone = false;
 
         winPanel.gameObject.SetActive(false);
+
+        BestTimeKeeper();
     }
 
     // Update is called once per frame
@@ -40,7 +42,7 @@ public class ObjectPlacementCon : MonoBehaviour
     {
         //the timer for each level; should add rating tracking here later
         Timer();
-        //print("Total time is: " + totalTime.ToString());
+        BestTimeUpdater();        
     }
 
     //the following should check if objects are placed in the correct location, and if so, freeze the timer and provide a next level/menu option
@@ -102,18 +104,6 @@ public class ObjectPlacementCon : MonoBehaviour
         {
             DisplayTime(totalTime);
         }
-
-        //for recording best clearance times
-        if (PlayerPrefs.HasKey("bestTime"))
-        {
-            bestTime = totalTime;
-        }
-        PlayerPrefs.SetFloat("bestTime", bestTime);
-
-        if (bestTime < PlayerPrefs.GetFloat("bestTime"))
-        {
-            PlayerPrefs.SetFloat("bestTime", bestTime);
-        }
     }
 
     IEnumerator DoPlacementCheck()
@@ -145,6 +135,32 @@ public class ObjectPlacementCon : MonoBehaviour
         timerTxtShdw.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         winStatsTxt.text = "It took: " + string.Format("{0:00}:{1:00}", minutes, seconds) + " to clean the room!";
         winStatsTxtShdw.text = "It took: " + string.Format("{0:00}:{1:00}", minutes, seconds) + " to clean the room!";
+    }
+
+    void BestTimeKeeper()
+    {
+        //for recording best clearance times
+        if (PlayerPrefs.HasKey("bestTime"))
+        {
+            bestTime = totalTime;
+        }
+        PlayerPrefs.SetFloat("bestTime", bestTime);
+    }
+
+    void BestTimeUpdater()
+    {
+        //should reset the best time if it is lower than previous rounds
+        float newBestTime;
+        newBestTime = totalTime;
+
+        if (newBestTime < PlayerPrefs.GetFloat("bestTime"))
+        {
+            PlayerPrefs.SetFloat("bestTime", newBestTime);
+        }
+        else if (newBestTime >= bestTime)
+        {
+            PlayerPrefs.GetFloat("bestTime");
+        }
     }
     #endregion
 }
